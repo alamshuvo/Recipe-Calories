@@ -13,6 +13,8 @@ function App() {
 const [recipes,setRecipes]=useState([]);
 const [cook,setCook]=useState([]);
 const [count,setCount]=useState(0);
+const [acount,setAcount]=useState(0);
+const [acook,setAcook]=useState([]);
 
 
 
@@ -26,7 +28,7 @@ const handleAddToCook =(recepieCook)=> {
   const isExist=cook.find(c=>c.recipe_id ==recepieCook.recipe_id);
   if (!isExist) {
     setCook([...cook,recepieCook]); 
-    setCount(count)   
+    setCount(count+1)   
   }
   else{
     toast.warn("Already Added")
@@ -34,6 +36,28 @@ const handleAddToCook =(recepieCook)=> {
 
 }
 
+
+
+const handlePrepraing=(preparing)=>{
+  console.log(preparing);
+  const remaining=cook.filter(c=>c.recipe_id !==preparing.recipe_id);
+ 
+if (remaining) {
+  setCook(remaining);
+   
+  setCount(count-1);
+}
+  const isExist=cook.find(c=>c.recipe_id ==preparing.recipe_id);
+
+   if (isExist) {
+    setAcook([...acook,preparing]); 
+    setAcount(acount+1)       
+   }
+  
+
+  
+  
+}
 
 
 
@@ -55,7 +79,7 @@ const handleAddToCook =(recepieCook)=> {
             <SingleRecepies recipes={recipes} handleAddToCook={handleAddToCook}></SingleRecepies>
            </div>
            <div className='md:w-[40%]'>
-              <Cart cook={cook}></Cart>
+              <Cart cook={cook} count={count} acount={acount} handlePrepraing={handlePrepraing} acook={acook}></Cart>
            </div>
       </section>
       <ToastContainer></ToastContainer>
