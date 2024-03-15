@@ -5,7 +5,7 @@ const Navigation = () => {
       <div>
         <div className="navbar bg-base-100 flex justify-between lexend">
           <div className="">
-            <a className="btn btn-ghost md:text-2xl text-[#150B2B] font-bold ">Recipe Calories</a>
+            <a className="btn btn-ghost md:text-2xl text-[#150B2B] font-bold ">Simply Recipes</a>
           </div>
           <div className="md:flex gap-5 hidden text-[#150b2bb3]">
         <a href="">Home</a>
