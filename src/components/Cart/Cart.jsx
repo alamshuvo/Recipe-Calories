@@ -1,7 +1,7 @@
 
 
-const Cart = ({cook,count,handlePrepraing,acount,acook}) => {
-    console.log(count);
+const Cart = ({cook,count,handlePrepraing,acount,acook,total,caloriesTotal}) => {
+    console.log(total);
     return (
         <div>
             <div className="mb-5 p-5">
@@ -60,8 +60,8 @@ const Cart = ({cook,count,handlePrepraing,acount,acook}) => {
                                 <tr>
                                     <th></th>
                                     <th></th>
-                                    <th>Total prepration Time :</th>
-                                    <th>Total Calories :</th>
+                                    <th>Total prepration Time {total} min:</th>
+                                    <th>Total Calories : {caloriesTotal} calories</th>
                                 </tr>
                     </thead>
                 </table>

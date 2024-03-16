@@ -15,6 +15,8 @@ const [cook,setCook]=useState([]);
 const [count,setCount]=useState(0);
 const [acount,setAcount]=useState(0);
 const [acook,setAcook]=useState([]);
+const [total,setTotal]=useState(0);
+const[caloriesTotal,setCaloriesTotal]=useState(0);
 
 
 
@@ -41,6 +43,9 @@ const handleAddToCook =(recepieCook)=> {
 const handlePrepraing=(preparing)=>{
   console.log(preparing);
   const remaining=cook.filter(c=>c.recipe_id !==preparing.recipe_id);
+  const a=acook.reduce((p,c)=>(p+c.preparing_time),preparing.preparing_time);
+  const caloriesTotal=acook.reduce((p,c)=>(p+c.calories),preparing.calories)
+  
  
 if (remaining) {
   setCook(remaining);
@@ -51,7 +56,9 @@ if (remaining) {
 
    if (isExist) {
     setAcook([...acook,preparing]); 
-    setAcount(acount+1)       
+    setAcount(acount+1)   ;
+    setTotal(a)  
+    setCaloriesTotal(caloriesTotal);  
    }
   
 
@@ -79,7 +86,9 @@ if (remaining) {
             <SingleRecepies recipes={recipes} handleAddToCook={handleAddToCook}></SingleRecepies>
            </div>
            <div className='md:w-[40%]'>
-              <Cart cook={cook} count={count} acount={acount} handlePrepraing={handlePrepraing} acook={acook}></Cart>
+              <Cart cook={cook} count={count} acount={acount} handlePrepraing={handlePrepraing} acook={acook} total={total}
+               caloriesTotal={caloriesTotal}
+               ></Cart>
            </div>
       </section>
       <ToastContainer></ToastContainer>

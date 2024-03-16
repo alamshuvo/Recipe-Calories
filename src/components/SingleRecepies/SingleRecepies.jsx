@@ -30,8 +30,8 @@ const SingleRecepies = ({recipes, handleAddToCook}) => {
             }
            </div>
            <div className="flex items-center fira-sans">
-            <p className="flex  items-center gap-5"> <FaRegClock></FaRegClock> {item.preparing_time}</p>
-            <p className="flex  items-center gap-5"> <FaGripfire></FaGripfire> {item.calories}</p>
+            <p className="flex  items-center gap-5"> <FaRegClock></FaRegClock> {item.preparing_time} min</p>
+            <p className="flex  items-center gap-5"> <FaGripfire></FaGripfire> {item.calories} calories</p>
            </div>
            <div className="card-actions">
               <button onClick={()=>handleAddToCook(item)} className="btn bg-green-500 rounded-full text-black">Want To Cook </button>
